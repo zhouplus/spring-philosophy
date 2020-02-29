@@ -36,9 +36,13 @@ public class DependencyInjectionDemo {
 
         // 依赖查找，这里结果报错，证明依赖查找和依赖注入不一样
         // 那么依赖查找和依赖注入都是依赖，他们的bean是来自于一个地方吗？是同源吗？答案是否定的
-        System.out.println(beanFactory.getBean(BeanFactory.class));
+        //(错误)
+        //System.out.println(beanFactory.getBean(BeanFactory.class));
 
 
+        ObjectFactory<User> userObjectFactory = userRepository.getUserObjectFactory();
+        //答案是superUser对象，原因是superUser对象我们定义了 Primary
+        System.out.println(userObjectFactory.getObject());
 
 
     }

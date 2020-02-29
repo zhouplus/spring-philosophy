@@ -2,6 +2,7 @@ package com.zhou.spring.philosophy.ioc.container.overview.repository;
 
 import com.zhou.spring.philosophy.ioc.container.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.ObjectFactory;
 
 import java.util.Collection;
 
@@ -14,10 +15,14 @@ import java.util.Collection;
  */
 public class UserRepository {
 
+    //来自于自己定义的bean
     private Collection<User> users;
 
-
+    // 来自于内建 非 Bean 对象 (依赖)
     private BeanFactory beanFactory;
+
+
+    private ObjectFactory<User> userObjectFactory;
 
     public Collection<User> getUsers() {
         return users;
@@ -33,5 +38,13 @@ public class UserRepository {
 
     public void setBeanFactory(BeanFactory beanFactory) {
         this.beanFactory = beanFactory;
+    }
+
+    public ObjectFactory<User> getUserObjectFactory() {
+        return userObjectFactory;
+    }
+
+    public void setUserObjectFactory(ObjectFactory<User> userObjectFactory) {
+        this.userObjectFactory = userObjectFactory;
     }
 }
