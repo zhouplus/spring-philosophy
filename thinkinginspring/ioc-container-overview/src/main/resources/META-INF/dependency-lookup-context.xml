@@ -14,4 +14,8 @@
         <property name="name" value="zhouplus" />
     </bean>
 
+    <bean id="beanFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean" >
+        <property name="targetBeanName" value="user" />
+    </bean>
+
 </beans>
