@@ -26,7 +26,7 @@ public class DependencyInjectionDemo {
 
         //配置 XML 配置文件
         //启动 Spring 应用上下文
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context.xml");
+       // BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context.xml");
 
         //UserRepository userRepository = (UserRepository) beanFactory.getBean("userRepository",UserRepository.class);
        // System.out.println(userRepository.getUsers());
@@ -50,14 +50,29 @@ public class DependencyInjectionDemo {
 ////        System.out.println(objectFactory.getObject() == beanFactory);
 
         //依赖来源一： 自定义 Bean
-        UserRepository userRepository = (UserRepository) beanFactory.getBean("userRepository",UserRepository.class);
+        //UserRepository userRepository = (UserRepository) beanFactory.getBean("userRepository",UserRepository.class);
         // System.out.println(userRepository.getUsers());
 
         //依赖来源二： 依赖注入（内建 依赖）
-        System.out.println(userRepository.getBeanFactory());
+        //System.out.println(userRepository.getBeanFactory());
 
         //依赖来源三： 容器内建的 Bean
-        Environment environment = beanFactory.getBean(Environment.class);
-        System.out.println("获取 Environment 类型的Bean -> " + environment);
+//        Environment environment = beanFactory.getBean(Environment.class);
+//        System.out.println("获取 Environment 类型的Bean -> " + environment);
+
+
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context.xml");
+
+        UserRepository userRepository = (UserRepository) applicationContext.getBean("userRepository",UserRepository.class);
+        whoIsIocContainer(userRepository,applicationContext);
+
+    }
+
+    private static void whoIsIocContainer(UserRepository userRepository, ApplicationContext applicationContext) {
+        //这个表达式为什么不成立？
+        System.out.println(userRepository.getBeanFactory() == applicationContext.getParentBeanFactory());
+
+
+        // ApplicationContext is BeanFactory
     }
 }
