@@ -6,6 +6,7 @@ import com.zhou.spring.philosophy.ioc.container.overview.repository.UserReposito
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Map;
@@ -40,10 +41,11 @@ public class DependencyInjectionDemo {
         //System.out.println(beanFactory.getBean(BeanFactory.class));
 
 
-        ObjectFactory<User> userObjectFactory = userRepository.getUserObjectFactory();
+        //ObjectFactory<User> userObjectFactory = userRepository.getUserObjectFactory();
         //答案是superUser对象，原因是superUser对象我们定义了 Primary
-        System.out.println(userObjectFactory.getObject());
+        //System.out.println(userObjectFactory.getObject());
 
-
+        ObjectFactory<ApplicationContext> objectFactory = userRepository.getObjectFactory();
+        System.out.println(objectFactory.getObject() == beanFactory);
     }
 }
