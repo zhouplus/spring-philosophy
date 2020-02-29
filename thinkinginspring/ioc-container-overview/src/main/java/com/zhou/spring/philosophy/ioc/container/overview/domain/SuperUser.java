@@ -1,6 +1,6 @@
-package com.zhou.spring.philosophy.ioc.container.overview.dependency.domain;
+package com.zhou.spring.philosophy.ioc.container.overview.domain;
 
-import com.zhou.spring.philosophy.ioc.container.overview.dependency.annotation.Super;
+import com.zhou.spring.philosophy.ioc.container.overview.annotation.Super;
 
 /**
  * 超级用户

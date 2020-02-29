@@ -1,7 +1,7 @@
 package com.zhou.spring.philosophy.ioc.container.overview.dependency.lookup;
 
-import com.zhou.spring.philosophy.ioc.container.overview.dependency.annotation.Super;
-import com.zhou.spring.philosophy.ioc.container.overview.dependency.domain.User;
+import com.zhou.spring.philosophy.ioc.container.overview.annotation.Super;
+import com.zhou.spring.philosophy.ioc.container.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.ObjectFactory;

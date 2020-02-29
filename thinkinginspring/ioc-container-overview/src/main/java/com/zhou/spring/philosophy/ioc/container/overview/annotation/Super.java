@@ -1,4 +1,4 @@
-package com.zhou.spring.philosophy.ioc.container.overview.dependency.annotation;
+package com.zhou.spring.philosophy.ioc.container.overview.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

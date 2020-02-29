@@ -9,12 +9,12 @@
 
 
 
-    <bean id="user" class="com.zhou.spring.philosophy.ioc.container.overview.dependency.domain.User">
+    <bean id="user" class="com.zhou.spring.philosophy.ioc.container.overview.domain.User">
         <property name="id" value="1"/>
         <property name="name" value="zhouplus" />
     </bean>
 
-    <bean id="superUser" class="com.zhou.spring.philosophy.ioc.container.overview.dependency.domain.SuperUser" parent="user" primary="true">
+    <bean id="superUser" class="com.zhou.spring.philosophy.ioc.container.overview.domain.SuperUser" parent="user" primary="true">
         <property name="address" value="北京"/>
     </bean>
 

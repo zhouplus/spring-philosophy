@@ -1,4 +1,4 @@
-package com.zhou.spring.philosophy.ioc.container.overview.dependency.domain;
+package com.zhou.spring.philosophy.ioc.container.overview.domain;
 
 /**
  * 用户类
