@@ -1,5 +1,6 @@
 package com.zhou.spring.philosophy.ioc.container.overview.dependency.lookup;
 
+import com.zhou.spring.philosophy.ioc.container.overview.dependency.annotation.Super;
 import com.zhou.spring.philosophy.ioc.container.overview.dependency.domain.User;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
@@ -36,6 +37,21 @@ public class DependencyLookupDemo {
         lookupByType(beanFactory);
         //按照类型查找一个集合
         lookupCollectionByType(beanFactory);
+
+        //通过注解查找
+        lookupByAnnotationType(beanFactory);
+
+
+    }
+
+    private static void lookupByAnnotationType(BeanFactory beanFactory) {
+        if(beanFactory instanceof ListableBeanFactory){
+            ListableBeanFactory listableBeanFactory = (ListableBeanFactory)beanFactory;
+            Map<String, Object> beansWithAnnotation = listableBeanFactory.getBeansWithAnnotation(Super.class);
+            System.out.println("按照注解查找 所有标注 @Super 的对象" + beansWithAnnotation);
+        }
+
+
 
 
     }
