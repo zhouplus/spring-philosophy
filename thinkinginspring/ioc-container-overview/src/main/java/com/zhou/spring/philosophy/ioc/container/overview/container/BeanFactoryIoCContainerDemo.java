@@ -15,7 +15,7 @@ import java.util.Map;
  * @author <a href="cjzjava@gmail.com">zhouplus</a>
  * @version V1.0
  */
-public class IoCContainerDemo {
+public class BeanFactoryIoCContainerDemo {
 
     public static void main(String[] args) {
 
