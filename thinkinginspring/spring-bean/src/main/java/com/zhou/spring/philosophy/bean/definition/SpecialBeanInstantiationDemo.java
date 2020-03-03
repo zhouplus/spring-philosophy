@@ -24,18 +24,26 @@ public class SpecialBeanInstantiationDemo {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/special-bean-instantiation-context.xml");
 
 
+        ServiceLoader<UserFactory> userFactoryServiceLoader = beanFactory.getBean("userFactoryServiceLoader",ServiceLoader.class);
+        displayServiceLoader(userFactoryServiceLoader);
+
+
         demoServiceLoader();
 
     }
 
 
     public static void demoServiceLoader(){
+        //区别在于这里如果接口有多种实现，会逐一输出，ServiceLoaderFactoryBean 不会,除非使用ServiceListFactoryBean
         ServiceLoader<UserFactory> serviceLoader = load(UserFactory.class, Thread.currentThread().getContextClassLoader());
+        displayServiceLoader(serviceLoader);
 
+    }
+
+    private static void displayServiceLoader(ServiceLoader<UserFactory> serviceLoader) {
         Iterator<UserFactory> iterator = serviceLoader.iterator();
         while (iterator.hasNext()){
             System.out.println(iterator.next().createUser());
         }
-
     }
 }
