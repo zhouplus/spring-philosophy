@@ -37,4 +37,11 @@ public class User {
         sb.append('}');
         return sb.toString();
     }
+
+    public  static User createUser(){
+        User user =  new User();
+        user.setId(2);
+        user.setName("zhou2");
+        return user;
+    }
 }
