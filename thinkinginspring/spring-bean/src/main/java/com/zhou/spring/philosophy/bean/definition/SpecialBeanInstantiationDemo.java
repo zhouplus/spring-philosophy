@@ -1,8 +1,11 @@
 package com.zhou.spring.philosophy.bean.definition;
 
+import com.zhou.spring.philosophy.bean.factory.DefaultUserFactory;
 import com.zhou.spring.philosophy.bean.factory.UserFactory;
 import com.zhou.spring.philosophy.ioc.container.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Iterator;
@@ -21,14 +24,19 @@ public class SpecialBeanInstantiationDemo {
 
     public static void main(String[] args) {
         //启动 Spring 应用上下文
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/special-bean-instantiation-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/special-bean-instantiation-context.xml");
 
+        //通过 ApplicationContext 获取 AutowireCapableBeanFactory
+        AutowireCapableBeanFactory beanFactory = applicationContext.getAutowireCapableBeanFactory();
 
-        ServiceLoader<UserFactory> userFactoryServiceLoader = beanFactory.getBean("userFactoryServiceLoader",ServiceLoader.class);
-        displayServiceLoader(userFactoryServiceLoader);
+        UserFactory userFactory = beanFactory.createBean(DefaultUserFactory.class);
+        System.out.println(userFactory.createUser());
 
-
-        demoServiceLoader();
+//        ServiceLoader<UserFactory> userFactoryServiceLoader = beanFactory.getBean("userFactoryServiceLoader",ServiceLoader.class);
+//        displayServiceLoader(userFactoryServiceLoader);
+//
+//
+//        demoServiceLoader();
 
     }
 
